@@ -1,0 +1,231 @@
+{
+  "info": {
+    "_postman_id": "agnos-hospital-middleware-postman",
+    "name": "Agnos Hospital Middleware API",
+    "description": "Postman Collection for testing Agnos Hospital Middleware Backend APIs",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "base_url",
+      "value": "http://localhost",
+      "type": "string"
+    },
+    {
+      "key": "token_hospital_a",
+      "value": "",
+      "type": "string"
+    },
+    {
+      "key": "token_hospital_b",
+      "value": "",
+      "type": "string"
+    }
+  ],
+  "item": [
+    {
+      "name": "Health Check",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/health",
+          "host": ["{{base_url}}"],
+          "path": ["health"]
+        }
+      }
+    },
+    {
+      "name": "1. Create Staff (Hospital A)",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"username\": \"doctor_somchai\",\n  \"password\": \"Password123!\",\n  \"hospital\": \"hospital-a\"\n}"
+        },
+        "url": {
+          "raw": "{{base_url}}/staff/create",
+          "host": ["{{base_url}}"],
+          "path": ["staff", "create"]
+        }
+      }
+    },
+    {
+      "name": "2. Create Staff (Hospital B)",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"username\": \"doctor_prasert\",\n  \"password\": \"Password123!\",\n  \"hospital\": \"hospital-b\"\n}"
+        },
+        "url": {
+          "raw": "{{base_url}}/staff/create",
+          "host": ["{{base_url}}"],
+          "path": ["staff", "create"]
+        }
+      }
+    },
+    {
+      "name": "3. Staff Login (Hospital A)",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "var jsonData = pm.response.json();",
+              "if (jsonData.data && jsonData.data.token) {",
+              "    pm.collectionVariables.set('token_hospital_a', jsonData.data.token);",
+              "}"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"username\": \"doctor_somchai\",\n  \"password\": \"Password123!\",\n  \"hospital\": \"hospital-a\"\n}"
+        },
+        "url": {
+          "raw": "{{base_url}}/staff/login",
+          "host": ["{{base_url}}"],
+          "path": ["staff", "login"]
+        }
+      }
+    },
+    {
+      "name": "4. Staff Login (Hospital B)",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "var jsonData = pm.response.json();",
+              "if (jsonData.data && jsonData.data.token) {",
+              "    pm.collectionVariables.set('token_hospital_b', jsonData.data.token);",
+              "}"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"username\": \"doctor_prasert\",\n  \"password\": \"Password123!\",\n  \"hospital\": \"hospital-b\"\n}"
+        },
+        "url": {
+          "raw": "{{base_url}}/staff/login",
+          "host": ["{{base_url}}"],
+          "path": ["staff", "login"]
+        }
+      }
+    },
+    {
+      "name": "5. Search Patients (Hospital A Staff - All)",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token_hospital_a}}"
+          }
+        ],
+        "url": {
+          "raw": "{{base_url}}/patient/search",
+          "host": ["{{base_url}}"],
+          "path": ["patient", "search"]
+        }
+      }
+    },
+    {
+      "name": "6. Search Patients (Hospital A Staff - By First Name)",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token_hospital_a}}"
+          }
+        ],
+        "url": {
+          "raw": "{{base_url}}/patient/search?first_name=Somchai",
+          "host": ["{{base_url}}"],
+          "path": ["patient", "search"],
+          "query": [
+            {
+              "key": "first_name",
+              "value": "Somchai"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "7. Search Patients (Hospital A Staff - By National ID)",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token_hospital_a}}"
+          }
+        ],
+        "url": {
+          "raw": "{{base_url}}/patient/search?national_id=1103701234567",
+          "host": ["{{base_url}}"],
+          "path": ["patient", "search"],
+          "query": [
+            {
+              "key": "national_id",
+              "value": "1103701234567"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "8. Search Patients (Hospital B Staff - Multi-Tenancy Isolation)",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token_hospital_b}}"
+          }
+        ],
+        "url": {
+          "raw": "{{base_url}}/patient/search",
+          "host": ["{{base_url}}"],
+          "path": ["patient", "search"]
+        }
+      }
+    }
+  ]
+}

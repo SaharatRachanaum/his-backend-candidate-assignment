@@ -1,0 +1,178 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 780" width="100%" height="100%" style="background-color: #0d1117; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
+  <defs>
+    <linearGradient id="headerGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#1f6feb" />
+      <stop offset="100%" stop-color="#388bfd" />
+    </linearGradient>
+    <filter id="shadow" x="-5%" y="-5%" width="110%" height="110%">
+      <feDropShadow dx="0" dy="8" stdDeviation="6" flood-color="#000000" flood-opacity="0.4"/>
+    </filter>
+    <marker id="arrow" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#58a6ff" />
+    </marker>
+    <marker id="crow" viewBox="0 0 12 12" refX="6" refY="6" markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M 12 0 L 0 6 L 12 12 M 0 6 L 12 6" fill="none" stroke="#58a6ff" stroke-width="2"/>
+    </marker>
+  </defs>
+
+  <!-- Title -->
+  <text x="600" y="45" text-anchor="middle" fill="#58a6ff" font-size="24" font-weight="bold" letter-spacing="1">HOSPITAL MIDDLEWARE SYSTEM - ENTITY RELATIONSHIP DIAGRAM</text>
+  <text x="600" y="70" text-anchor="middle" fill="#8b949e" font-size="14">Multi-Tenant Database Architecture with Hospital Isolation</text>
+
+  <!-- 1. HOSPITALS TABLE (Left Center) -->
+  <g transform="translate(60, 240)" filter="url(#shadow)">
+    <!-- Box Frame -->
+    <rect width="300" height="230" rx="10" fill="#161b22" stroke="#30363d" stroke-width="1.5"/>
+    <!-- Header -->
+    <path d="M 0 10 Q 0 0 10 0 L 290 0 Q 300 0 300 10 L 300 45 L 0 45 Z" fill="url(#headerGrad)"/>
+    <text x="15" y="28" fill="#ffffff" font-size="16" font-weight="bold">🏢 hospitals</text>
+    <text x="285" y="28" text-anchor="end" fill="#e6edf3" font-size="12">Master Entity</text>
+    <!-- Columns -->
+    <text x="15" y="75" fill="#f0883e" font-weight="bold" font-size="13">🔑 id</text>
+    <text x="130" y="75" fill="#8b949e" font-size="12">VARCHAR(50)</text>
+    <text x="285" y="75" text-anchor="end" fill="#58a6ff" font-size="11">PK</text>
+    <line x1="15" y1="85" x2="285" y2="85" stroke="#21262d" stroke-width="1"/>
+
+    <text x="15" y="110" fill="#c9d1d9" font-size="13">name</text>
+    <text x="130" y="110" fill="#8b949e" font-size="12">VARCHAR(100)</text>
+    <text x="285" y="110" text-anchor="end" fill="#7ee787" font-size="11">NOT NULL</text>
+    <line x1="15" y1="120" x2="285" y2="120" stroke="#21262d" stroke-width="1"/>
+
+    <text x="15" y="145" fill="#c9d1d9" font-size="13">his_api_url</text>
+    <text x="130" y="145" fill="#8b949e" font-size="12">VARCHAR(255)</text>
+    <text x="285" y="145" text-anchor="end" fill="#8b949e" font-size="11">NULLABLE</text>
+    <line x1="15" y1="155" x2="285" y2="155" stroke="#21262d" stroke-width="1"/>
+
+    <text x="15" y="180" fill="#8b949e" font-size="13">created_at</text>
+    <text x="130" y="180" fill="#8b949e" font-size="12">TIMESTAMPTZ</text>
+    <line x1="15" y1="190" x2="285" y2="190" stroke="#21262d" stroke-width="1"/>
+
+    <text x="15" y="215" fill="#8b949e" font-size="13">updated_at</text>
+    <text x="130" y="215" fill="#8b949e" font-size="12">TIMESTAMPTZ</text>
+  </g>
+
+  <!-- 2. STAFFS TABLE (Top Right) -->
+  <g transform="translate(480, 110)" filter="url(#shadow)">
+    <rect width="320" height="260" rx="10" fill="#161b22" stroke="#30363d" stroke-width="1.5"/>
+    <path d="M 0 10 Q 0 0 10 0 L 310 0 Q 320 0 320 10 L 320 45 L 0 45 Z" fill="#238636"/>
+    <text x="15" y="28" fill="#ffffff" font-size="16" font-weight="bold">👨‍⚕️ staffs</text>
+    <text x="305" y="28" text-anchor="end" fill="#e6edf3" font-size="12">Auth Entity</text>
+
+    <text x="15" y="75" fill="#f0883e" font-weight="bold" font-size="13">🔑 id</text>
+    <text x="140" y="75" fill="#8b949e" font-size="12">UUID</text>
+    <text x="305" y="75" text-anchor="end" fill="#58a6ff" font-size="11">PK</text>
+    <line x1="15" y1="85" x2="305" y2="85" stroke="#21262d" stroke-width="1"/>
+
+    <text x="15" y="110" fill="#f0883e" font-size="13">🔗 hospital_id</text>
+    <text x="140" y="110" fill="#8b949e" font-size="12">VARCHAR(50)</text>
+    <text x="305" y="110" text-anchor="end" fill="#d29922" font-size="11">FK, INDEX</text>
+    <line x1="15" y1="120" x2="305" y2="120" stroke="#21262d" stroke-width="1"/>
+
+    <text x="15" y="145" fill="#c9d1d9" font-size="13">username</text>
+    <text x="140" y="145" fill="#8b949e" font-size="12">VARCHAR(50)</text>
+    <text x="305" y="145" text-anchor="end" fill="#f778ba" font-size="11">UNIQUE</text>
+    <line x1="15" y1="155" x2="305" y2="155" stroke="#21262d" stroke-width="1"/>
+
+    <text x="15" y="180" fill="#c9d1d9" font-size="13">password_hash</text>
+    <text x="140" y="180" fill="#8b949e" font-size="12">VARCHAR(255)</text>
+    <text x="305" y="180" text-anchor="end" fill="#7ee787" font-size="11">BCRYPT</text>
+    <line x1="15" y1="190" x2="305" y2="190" stroke="#21262d" stroke-width="1"/>
+
+    <text x="15" y="215" fill="#8b949e" font-size="13">created_at</text>
+    <text x="140" y="215" fill="#8b949e" font-size="12">TIMESTAMPTZ</text>
+    <line x1="15" y1="225" x2="305" y2="225" stroke="#21262d" stroke-width="1"/>
+
+    <text x="15" y="245" fill="#8b949e" font-size="13">updated_at</text>
+    <text x="140" y="245" fill="#8b949e" font-size="12">TIMESTAMPTZ</text>
+  </g>
+
+  <!-- 3. PATIENTS TABLE (Bottom Right) -->
+  <g transform="translate(840, 110)" filter="url(#shadow)">
+    <rect width="320" height="610" rx="10" fill="#161b22" stroke="#30363d" stroke-width="1.5"/>
+    <path d="M 0 10 Q 0 0 10 0 L 310 0 Q 320 0 320 10 L 320 45 L 0 45 Z" fill="#8957e5"/>
+    <text x="15" y="28" fill="#ffffff" font-size="16" font-weight="bold">🏥 patients</text>
+    <text x="305" y="28" text-anchor="end" fill="#e6edf3" font-size="12">Tenant Scoped</text>
+
+    <text x="15" y="75" fill="#f0883e" font-weight="bold" font-size="13">🔑 id</text>
+    <text x="140" y="75" fill="#8b949e" font-size="12">UUID</text>
+    <text x="305" y="75" text-anchor="end" fill="#58a6ff" font-size="11">PK</text>
+    <line x1="15" y1="85" x2="305" y2="85" stroke="#21262d" stroke-width="1"/>
+
+    <text x="15" y="110" fill="#f0883e" font-size="13">🔗 hospital_id</text>
+    <text x="140" y="110" fill="#8b949e" font-size="12">VARCHAR(50)</text>
+    <text x="305" y="110" text-anchor="end" fill="#d29922" font-size="11">FK, INDEX</text>
+    <line x1="15" y1="120" x2="305" y2="120" stroke="#21262d" stroke-width="1"/>
+
+    <text x="15" y="145" fill="#c9d1d9" font-size="13">patient_hn</text>
+    <text x="140" y="145" fill="#8b949e" font-size="12">VARCHAR(50)</text>
+    <text x="305" y="145" text-anchor="end" fill="#7ee787" font-size="11">INDEX</text>
+    <line x1="15" y1="155" x2="305" y2="155" stroke="#21262d" stroke-width="1"/>
+
+    <text x="15" y="180" fill="#c9d1d9" font-size="13">first_name_th</text>
+    <text x="140" y="180" fill="#8b949e" font-size="12">VARCHAR(100)</text>
+    <line x1="15" y1="190" x2="305" y2="190" stroke="#21262d" stroke-width="1"/>
+
+    <text x="15" y="215" fill="#c9d1d9" font-size="13">middle_name_th</text>
+    <text x="140" y="215" fill="#8b949e" font-size="12">VARCHAR(100)</text>
+    <line x1="15" y1="225" x2="305" y2="225" stroke="#21262d" stroke-width="1"/>
+
+    <text x="15" y="250" fill="#c9d1d9" font-size="13">last_name_th</text>
+    <text x="140" y="250" fill="#8b949e" font-size="12">VARCHAR(100)</text>
+    <line x1="15" y1="260" x2="305" y2="260" stroke="#21262d" stroke-width="1"/>
+
+    <text x="15" y="285" fill="#c9d1d9" font-size="13">first_name_en</text>
+    <text x="140" y="285" fill="#8b949e" font-size="12">VARCHAR(100)</text>
+    <line x1="15" y1="295" x2="305" y2="295" stroke="#21262d" stroke-width="1"/>
+
+    <text x="15" y="320" fill="#c9d1d9" font-size="13">middle_name_en</text>
+    <text x="140" y="320" fill="#8b949e" font-size="12">VARCHAR(100)</text>
+    <line x1="15" y1="330" x2="305" y2="330" stroke="#21262d" stroke-width="1"/>
+
+    <text x="15" y="355" fill="#c9d1d9" font-size="13">last_name_en</text>
+    <text x="140" y="355" fill="#8b949e" font-size="12">VARCHAR(100)</text>
+    <line x1="15" y1="365" x2="305" y2="365" stroke="#21262d" stroke-width="1"/>
+
+    <text x="15" y="390" fill="#c9d1d9" font-size="13">date_of_birth</text>
+    <text x="140" y="390" fill="#8b949e" font-size="12">VARCHAR(20)</text>
+    <text x="305" y="390" text-anchor="end" fill="#7ee787" font-size="11">INDEX</text>
+    <line x1="15" y1="400" x2="305" y2="400" stroke="#21262d" stroke-width="1"/>
+
+    <text x="15" y="425" fill="#c9d1d9" font-size="13">national_id</text>
+    <text x="140" y="425" fill="#8b949e" font-size="12">VARCHAR(50)</text>
+    <text x="305" y="425" text-anchor="end" fill="#7ee787" font-size="11">INDEX</text>
+    <line x1="15" y1="435" x2="305" y2="435" stroke="#21262d" stroke-width="1"/>
+
+    <text x="15" y="460" fill="#c9d1d9" font-size="13">passport_id</text>
+    <text x="140" y="460" fill="#8b949e" font-size="12">VARCHAR(50)</text>
+    <text x="305" y="460" text-anchor="end" fill="#7ee787" font-size="11">INDEX</text>
+    <line x1="15" y1="470" x2="305" y2="470" stroke="#21262d" stroke-width="1"/>
+
+    <text x="15" y="495" fill="#c9d1d9" font-size="13">phone_number</text>
+    <text x="140" y="495" fill="#8b949e" font-size="12">VARCHAR(50)</text>
+    <text x="305" y="495" text-anchor="end" fill="#7ee787" font-size="11">INDEX</text>
+    <line x1="15" y1="505" x2="305" y2="505" stroke="#21262d" stroke-width="1"/>
+
+    <text x="15" y="530" fill="#c9d1d9" font-size="13">email</text>
+    <text x="140" y="530" fill="#8b949e" font-size="12">VARCHAR(100)</text>
+    <text x="305" y="530" text-anchor="end" fill="#7ee787" font-size="11">INDEX</text>
+    <line x1="15" y1="540" x2="305" y2="540" stroke="#21262d" stroke-width="1"/>
+
+    <text x="15" y="565" fill="#c9d1d9" font-size="13">gender</text>
+    <text x="140" y="565" fill="#8b949e" font-size="12">VARCHAR(10)</text>
+    <line x1="15" y1="575" x2="305" y2="575" stroke="#21262d" stroke-width="1"/>
+
+    <text x="15" y="595" fill="#8b949e" font-size="13">created_at / updated_at</text>
+    <text x="210" y="595" fill="#8b949e" font-size="12">TIMESTAMPTZ</text>
+  </g>
+
+  <!-- RELATIONSHIP LINES -->
+  <!-- 1. Hospitals (1) to Staffs (N) -->
+  <path d="M 360 315 L 420 315 L 420 220 L 480 220" fill="none" stroke="#58a6ff" stroke-width="2" marker-end="url(#crow)"/>
+  <rect x="375" y="270" width="90" height="24" rx="4" fill="#0d1117" stroke="#30363d"/>
+  <text x="420" y="286" text-anchor="middle" fill="#58a6ff" font-size="11" font-weight="bold">1 : N (employs)</text>
+
+  <!-- 2. Hospitals (1) to Patients (N) -->
+  <path d="M 360 360 L 440 360 L 440 500 L 840 500" fill="none" stroke="#58a6ff" stroke-width="2" marker-end="url(#crow)"/>
+  <rect x="520" y="488" width="95" height="24" rx="4" fill="#0d1117" stroke="#30363d"/>
+  <text x="567" y="504" text-anchor="middle" fill="#58a6ff" font-size="11" font-weight="bold">1 : N (registers)</text>
+</svg>

@@ -1,0 +1,29 @@
+# Binaries and build artifacts
+bin/
+dist/
+server
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+*.test
+*.out
+
+# Environment files
+.env
+.env.local
+
+# IDE and OS files
+.DS_Store
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Docker volume data
+postgres_data/
+
+# Coverage reports
+coverage.out
+coverage.html

@@ -1,0 +1,10 @@
+.git
+.gitignore
+.env
+.DS_Store
+*.md
+docs/
+*.test
+*.out
+postgres_data/
+Makefile

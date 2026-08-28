@@ -1,0 +1,3 @@
+DROP TABLE IF EXISTS patients;
+DROP TABLE IF EXISTS staffs;
+DROP TABLE IF EXISTS hospitals;
