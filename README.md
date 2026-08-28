@@ -6,6 +6,20 @@
 
 ---
 
+## 🔗 ลิงก์เอกสารและการส่งมอบงาน (Deliverables Links)
+
+| รายการส่งมอบ (Deliverable) | ลิงก์ / ตำแหน่งไฟล์ |
+|---|---|
+| 📄 **Google Doc (Development Planning Document)** | [คลิกเพื่อดู Google Doc](https://docs.google.com/document/d/1dKuPOS-yhGq-jd-ldUqNdbdeTjcWOtDn-pI5mvGL-Hs/edit?usp=sharing) |
+| 📦 **GitHub Repository** | [https://github.com/SaharatRachanaum/his-backend-candidate-assignment](https://github.com/SaharatRachanaum/his-backend-candidate-assignment) |
+| 📑 **ไฟล์เอกสารสำรอง (PDF)** | [`docs/Agnos Candidate Assignment - Development Planning Documentation.pdf`](docs/Agnos%20Candidate%20Assignment%20-%20Development%20Planning%20Documentation.pdf) |
+| 📝 **ไฟล์เอกสารสำรอง (Word .docx)** | [`docs/Agnos Candidate Assignment - Development Planning Documentation.docx`](docs/Agnos%20Candidate%20Assignment%20-%20Development%20Planning%20Documentation.docx) |
+| 🖼️ **แผนภาพฐานข้อมูล (ER Diagram Vector SVG)** | [`docs/er_diagram.svg`](docs/er_diagram.svg) *(หลัก - สวยคมชัด Vector)* |
+| 🖼️ **แผนภาพฐานข้อมูล (ER Diagram Image PNG)** | [`docs/er_diagram.png`](docs/er_diagram.png) *(สำรอง)* |
+| 📬 **Postman Collection** | [`docs/postman_collection.json`](docs/postman_collection.json) |
+
+---
+
 ## 📋 สารบัญ (Table of Contents)
 1. [Tech Stack](#-tech-stack)
 2. [สถาปัตยกรรมและฟีเจอร์หลัก (Key Features & Architecture)](#-สถาปัตยกรรมและฟีเจอร์หลัก)
@@ -99,10 +113,12 @@
 │   └── conf.d/
 │       └── default.conf            # Nginx Reverse Proxy Config
 ├── docs/
+│   ├── Agnos Candidate Assignment - Development Planning Documentation.docx # ไฟล์เอกสาร Word
+│   ├── Agnos Candidate Assignment - Development Planning Documentation.pdf  # ไฟล์เอกสาร PDF
 │   ├── API_SPEC.md                 # เอกสารรายละเอียด API ทุก Endpoint
 │   ├── ER_DIAGRAM.md               # เอกสารคำอธิบาย Database Schema & ER Diagram
-│   ├── er_diagram.svg              # ภาพ Vector ER Diagram ความละเอียดสูง
-│   ├── er_diagram.html             # ไฟล์เปิดดูภาพ ER Diagram สำหรับคัดลอกลง Google Docs
+│   ├── er_diagram.png              # ภาพแผนภาพ ER Diagram คมชัดสูง
+│   ├── er_diagram.svg              # ภาพ Vector ER Diagram
 │   └── postman_collection.json     # Postman Collection พร้อมทดสอบทันที
 ├── Dockerfile                      # Multi-stage Docker build สำหรับ Go Service
 ├── docker-compose.yml              # ไฟล์ Compose รวม Nginx, Go Service, PostgreSQL
@@ -197,7 +213,7 @@ erDiagram
         timestamp updated_at
     }
 ```
-*สามารถเปิดดูไฟล์ภาพ ER Diagram ความละเอียดสูงได้ที่ [docs/er_diagram.html](docs/er_diagram.html) หรือ [docs/er_diagram.svg](docs/er_diagram.svg)*
+*ดูภาพ ER Diagram ความละเอียดสูงได้ที่ [docs/er_diagram.svg](docs/er_diagram.svg) หรืออ่านรายละเอียดตารางทั้งหมดได้ที่ [docs/ER_DIAGRAM.md](docs/ER_DIAGRAM.md)*
 
 ---
 
