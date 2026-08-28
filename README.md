@@ -213,7 +213,7 @@ erDiagram
         timestamp updated_at
     }
 ```
-*ดูภาพ ER Diagram ความละเอียดสูงได้ที่ [docs/er_diagram.svg](docs/er_diagram.svg) หรืออ่านรายละเอียดตารางทั้งหมดได้ที่ [docs/ER_DIAGRAM.md](docs/ER_DIAGRAM.md)*
+*ดูภาพ ER Diagram ความละเอียดสูงได้ที่ [docs/er_diagram.png](docs/er_diagram.png) หรืออ่านรายละเอียดตารางทั้งหมดได้ที่ [docs/ER_DIAGRAM.md](docs/ER_DIAGRAM.md)*
 
 ---
 
